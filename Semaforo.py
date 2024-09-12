@@ -1,4 +1,5 @@
 import gpiozero
+import time
 
 class semaforo:
     #metodo constructor
@@ -15,7 +16,31 @@ class semaforo:
         return self.amarillo
     def get_verde(self):
         return self.verde
-    
 
-    def encender_semaforo(self):
-        pass
+    def encender_semaforo(self, verde): #verde parametro booleano que determina si la posicion inicial del semaforo es o no verde
+        if verde:
+            while True:
+                self.verde.on
+                time.sleep(5)
+                self.verde.off
+
+                self.amarillo.on
+                time.sleep(2)
+                self.amarillo.off
+
+                self.rojo.on
+                time.sleep(7)
+                self.rojo.off
+        else:
+            while True:
+                self.rojo.on
+                time.sleep(7)
+                self.rojo.off
+
+                self.verde.on
+                time.sleep(5)
+                self.verde.off
+
+                self.amarillo.on
+                time.sleep(2)
+                self.amarillo.off

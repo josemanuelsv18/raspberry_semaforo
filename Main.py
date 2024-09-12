@@ -1,3 +1,5 @@
+import Semaforo
+
 class Main:
     #inicializacion de la clase
     def __init__(self) -> None:
