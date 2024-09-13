@@ -3,7 +3,7 @@ import time
 
 class semaforo:
     #metodo constructor
-    def __init__(self, r, a, v, inicial): #recibe el numero del pin al que esta conectado cada led
+    def __init__(self,inicial,r, a, v): #recibe el numero del pin al que esta conectado cada led
         #atributos
         self.rojo = gpiozero.LED(r)
         self.amarillo = gpiozero.LED(a)
