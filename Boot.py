@@ -5,7 +5,7 @@ except:
     import socket
     
 import network
-from machine import Pin #modulo Pin de la biblioteca machine
+import _thread
 
 import gc #modulo para la recoleccion de basura
 gc.collect() #ejecutar recoleccion de basura
@@ -16,12 +16,15 @@ class Boot:
         self.ssid = red
         self.password = password
     def conectar(self):
-        station = network.WLAN(network.STA_IF) #instancia de la interfaz WLAN
-        station.active(True) #activar la interfaz
-        station.connect(self.ssid, self.password) #conectar a la red Wi-Fi
-        #Espera la conexion exitosa
-        while station.isconnected() == False:
+        #conectar a la red
+        wlan = network.WLAN(network.STA_IF)
+        wlan.active(True)
+        wlan.connect(self.ssid, self.password)
+        while not wlan.isconnected():
             pass
-        #informar sobre la conexion
-        print('conexion establecida correctamente')
-        print(station.ifconfig())
+        # Imprimir información de la conexión
+        print('Conexion exitosa')
+        print(wlan.ifconfig())
+        #obtener la ip
+        ip = wlan.ifconfig()[0]
+        print(f'Conectado a {self.ssid} con IP: {ip}')
