@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaforo Raspberry Pi</title>
+    <link rel="stylesheet" href="./page.css">
+</head>
+<body>
+    <h1>Raspberry Pi Pico Web Server: Semaforo</h1>
+    <p>Semáforo</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <p><a href="/?led-r"><button class="ButtonR Button">R</button></a></p>
+                </td>
+                <td>
+                    <strong> """+ r_value +"""</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <p><a href="/?led-g"><button class="ButtonG Button">G</button></a></p>
+                </td>
+                <td>
+                    <strong> """+ g_value +"""</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><a href="/?led-y"><button class="ButtonY Button">Y</button></a></p>
+                </td>
+                <td>
+                    <strong> """+ y_value +""" </strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <img src="https://brandslogos.com/wpcontent/uploads/images/large/raspberry-pi-logo.png" alt="Logo Raspberry Pi" width="150" height="150">
+                    </center>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ </body>
+</html>

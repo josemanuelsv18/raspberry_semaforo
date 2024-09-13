@@ -5,13 +5,11 @@ except:
     import socket
     
 import network
-import _thread
-
 import gc #modulo para la recoleccion de basura
-gc.collect() #ejecutar recoleccion de basura
 
 class Boot:
     def __init__(self, red, password):
+        gc.collect() #ejecutar recoleccion de basura
         #credenciales de la red Wi-Fi
         self.ssid = red
         self.password = password
@@ -25,6 +23,3 @@ class Boot:
         # Imprimir información de la conexión
         print('Conexion exitosa')
         print(wlan.ifconfig())
-        #obtener la ip
-        ip = wlan.ifconfig()[0]
-        print(f'Conectado a {self.ssid} con IP: {ip}')

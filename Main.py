@@ -1,5 +1,6 @@
 import Semaforo
 import Boot
+import socket
 
 class Main:
     #inicializacion de la clase
@@ -28,6 +29,11 @@ class Main:
         obj_semaforo2 = Semaforo.semaforo(semaforo2[0],semaforo2[1],semaforo2[2],semaforo2[3])
         obj_semaforo1.encender_semaforo()
         obj_semaforo2.encender_semaforo()
+
+    def web_page():
+        html = """
+            
+"""
 
 #llamada al main
 if __name__ == '__main__':
