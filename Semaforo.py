@@ -21,7 +21,7 @@ class semaforo:
         return self.inicial
 
     def encender_semaforo(self): 
-        if self.inicial:#inicial parametro booleano que determina si la posicion inicial del semaforo es o no verde
+        if self.inicial: #inicial parametro booleano que determina si la posicion inicial del semaforo es o no verde
             while True:
                 self.verde.value(1)
                 self.amarillo.value(0)

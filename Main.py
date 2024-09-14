@@ -1,4 +1,5 @@
 import Semaforo
+import threading
 #import Boot
 
 class Main:
@@ -26,8 +27,16 @@ class Main:
         #Crear los obj semaforos y llamar los metodos  
         obj_semaforo1 = Semaforo.semaforo(semaforo1[0],semaforo1[1],semaforo1[2],semaforo1[3])
         obj_semaforo2 = Semaforo.semaforo(semaforo2[0],semaforo2[1],semaforo2[2],semaforo2[3])
-        obj_semaforo1.encender_semaforo()
-        obj_semaforo2.encender_semaforo()
+        #Crear hilos para que ambos semaforos funcionen en paralelo
+        thread_semaforo1 = threading.Thread(obj_semaforo1.encender_semaforo())
+        thread_semaforo2 = threading.Thread(obj_semaforo2.encender_semaforo())
+        #iniciar los hilos
+        thread_semaforo1.start()
+        thread_semaforo2.start()
+        #esperar el final de los hilos (a pesar de que se tienen bucles infinitos)
+        thread_semaforo1.join()
+        thread_semaforo2.join()
+        
 
 #llamada al main
 if __name__ == '__main__':
