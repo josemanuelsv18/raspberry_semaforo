@@ -20,40 +20,40 @@ class semaforo:
     def get_inicial(self):
         return self.inicial
 
-    def encender_semaforo(self): #verde parametro booleano que determina si la posicion inicial del semaforo es o no verde
-        if self.inicial:
+    def encender_semaforo(self): 
+        if self.inicial:#inicial parametro booleano que determina si la posicion inicial del semaforo es o no verde
             while True:
-                self.verde.on()
-                self.amarillo.off()
-                self.get_rojo.off()
+                self.verde.value(1)
+                self.amarillo.value(0)
+                self.rojo.value(0)
                 print('Semaforo 1 VERDE')
                 time.sleep(5)
                 self.verde.off()
 
-                self.amarillo.on()
+                self.amarillo.value(1)
                 print('Semaforo 1 AMARILLO')
                 time.sleep(2)
-                self.amarillo.off()
+                self.amarillo.value(0)
 
-                self.rojo.on()
+                self.rojo.value(1)
                 print('Semaforo 1 ROJO')
                 time.sleep(7)
-                self.rojo.off()
+                self.rojo.value(0)
         else:
             while True:
-                self.rojo.on()
-                self.amarillo.off()
-                self.verde.off()
+                self.rojo.value(1)
+                self.amarillo.value(0)
+                self.verde.value(0)
                 print('Semaforo 2 ROJO')
                 time.sleep(7)
-                self.rojo.off()
+                self.rojo.value(0)
 
-                self.verde.on()
+                self.verde.value(1)
                 print('Semaforo 2 VERDE')
                 time.sleep(5)
-                self.verde.off()
+                self.verde.value(0)
 
-                self.amarillo.on()
+                self.amarillo.value(1)
                 print('Semaforo 2 AMARILLO')
                 time.sleep(2)
-                self.amarillo.off()
+                self.amarillo.value(0)
