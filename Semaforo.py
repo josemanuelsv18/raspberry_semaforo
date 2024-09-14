@@ -1,59 +1,47 @@
 from machine import Pin
-import time
+import uasyncio as asyncio
 
-class semaforo:
-    #metodo constructor
-    def __init__(self,inicial,r, a, v): #recibe el numero del pin al que esta conectado cada led
-        #atributos
+class Semaforo:
+    def __init__(self, inicial, r, a, v):
         self.rojo = Pin(r, Pin.OUT)
         self.amarillo = Pin(a, Pin.OUT)
         self.verde = Pin(v, Pin.OUT)
         self.inicial = inicial
 
-    #getters
-    def get_rojo(self):
-        return self.rojo
-    def get_amarillo(self):
-        return self.amarillo
-    def get_verde(self):
-        return self.verde
-    def get_inicial(self):
-        return self.inicial
-
-    def encender_semaforo(self): 
-        if self.inicial: #inicial parametro booleano que determina si la posicion inicial del semaforo es o no verde
+    async def encender_semaforo(self):
+        if self.inicial:
             while True:
                 self.verde.value(1)
                 self.amarillo.value(0)
                 self.rojo.value(0)
-                print('Semaforo 1 VERDE')
-                time.sleep(5)
-                self.verde.off()
+                print('Semáforo 1 VERDE')
+                await asyncio.sleep(5)
+                self.verde.value(0)
 
                 self.amarillo.value(1)
-                print('Semaforo 1 AMARILLO')
-                time.sleep(2)
+                print('Semáforo 1 AMARILLO')
+                await asyncio.sleep(2)
                 self.amarillo.value(0)
 
                 self.rojo.value(1)
-                print('Semaforo 1 ROJO')
-                time.sleep(7)
+                print('Semáforo 1 ROJO')
+                await asyncio.sleep(7)
                 self.rojo.value(0)
         else:
             while True:
                 self.rojo.value(1)
                 self.amarillo.value(0)
                 self.verde.value(0)
-                print('Semaforo 2 ROJO')
-                time.sleep(7)
+                print('Semáforo 2 ROJO')
+                await asyncio.sleep(7)
                 self.rojo.value(0)
 
                 self.verde.value(1)
-                print('Semaforo 2 VERDE')
-                time.sleep(5)
+                print('Semáforo 2 VERDE')
+                await asyncio.sleep(5)
                 self.verde.value(0)
 
                 self.amarillo.value(1)
-                print('Semaforo 2 AMARILLO')
-                time.sleep(2)
+                print('Semáforo 2 AMARILLO')
+                await asyncio.sleep(2)
                 self.amarillo.value(0)
