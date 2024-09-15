@@ -1,5 +1,6 @@
 import uasyncio as asyncio
 from Semaforo import Semaforo
+import socket
 
 class Main:
     def __init__(self) -> None:
