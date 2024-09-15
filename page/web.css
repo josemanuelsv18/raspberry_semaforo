@@ -1,0 +1,54 @@
+*{
+    font-style: roboto;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+h1, h2{
+    margin: 0;
+    margin-bottom: 10px;
+}
+.body{
+    background-color: #ccc;
+    width: 100%;
+    height: 60vh;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.semaforo{
+    width: 200px;
+    height: 90%;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center
+}
+.red, .yellow, .green{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}
+.red{
+    background-color: #4d0000;
+}
+.yellow{
+    background-color: #4d4d00;
+}
+.green{
+    background-color: #004d00;
+}
+footer{
+
+}

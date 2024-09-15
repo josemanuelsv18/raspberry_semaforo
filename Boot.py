@@ -3,28 +3,34 @@ try:
     import usocket as socket
 except:
     import socket
-    
-import network
-import _thread
 
+from machine import Pin    
+import network
+import time
 import gc #modulo para la recoleccion de basura
-gc.collect() #ejecutar recoleccion de basura
+ 
 
 class Boot:
     def __init__(self, red, password):
+        #ejecutar recoleccion de basura
+        gc.collect()
         #credenciales de la red Wi-Fi
         self.ssid = red
         self.password = password
-    def conectar(self):
+    def conectar(self, l): #el parametro l define el pin que se va a encender para avisara al usuario de la conexion
         #conectar a la red
-        wlan = network.WLAN(network.STA_IF)
-        wlan.active(True)
-        wlan.connect(self.ssid, self.password)
-        while not wlan.isconnected():
+        station = network.WLAN(network.STA_IF) #crea instancia de la interfaz WLAN
+        station.active(True)
+        station.connect(self.ssid, self.password) #conecta a la red WiFi
+        #Esperar a que la conexion sea exitosa
+        while not station.isconnected():
             pass
-        # Imprimir información de la conexión
+        #Imprimir información de la conexión
         print('Conexion exitosa')
-        print(wlan.ifconfig())
-        #obtener la ip
-        ip = wlan.ifconfig()[0]
-        print(f'Conectado a {self.ssid} con IP: {ip}')
+        print(station.ifconfig())
+        #configurar led para avisar del estado de la conexion a la raspberry
+        led = Pin(l, Pin.OUT)
+        led.value(1)
+        time.sleep(5)
+        led.value(0)
+        

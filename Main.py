@@ -5,6 +5,10 @@ class Main:
     def __init__(self) -> None:
         pass
     
+    def web_page():
+        html = open("./page/web.html", r).read()
+        
+
     async def main(self):
         # Pines para el primer semáforo
         pin_rojo1 = 0
