@@ -9,8 +9,19 @@ class Main:
     def web_page():
         html = open("./page/web.html", r).read()
         
-
     async def main(self):
+        #Crear un socket y vincularlo al puerto 80
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(('', 80))
+        #configurar el socket para escuchar hasta 5 conexiones entrantes
+        s.listen(5)
+        try:
+            conn, addr = s.accept() # Aceptar una conexión entrante
+            print('Got a connection from %s' % str(addr))
+            request = str(conn.recv(1024)) # Recibir la solicitud del cliente
+            
+        except:
+            pass
         # Pines para el primer semáforo
         pin_rojo1 = 0
         pin_amarillo1 = 1
